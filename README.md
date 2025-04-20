@@ -1,8 +1,28 @@
-# React + Vite
+# ✨ Gemini Clone – AI Assistant Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek and minimal **Gemini AI** web app clone built using **ReactJS** and **CSS**. This project mimics a conversational AI assistant interface with functional state management and modern UI layout.
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 💬 AI-style chat UI (no backend, frontend clone only)
+- 🎨 CSS-based styling (no Tailwind or UI libraries)
+- 🧠 State management using `useState` and `useContext`
+- 📁 Asset handling for icons and images
+
+## 🛠️ Tech Stack
+
+- [ReactJS](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [useState](https://reactjs.org/docs/hooks-state.html), [useContext](https://reactjs.org/docs/context.html)
+
+
+## 📦 Installation
+
+Clone the repository and run locally:
+
+```bash
+git clone https://github.com/your-username/gemini-clone.git
+cd gemini-clone
+npm install
+npm run dev
