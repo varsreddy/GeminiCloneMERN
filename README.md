@@ -16,6 +16,8 @@ A sleek and minimal **Gemini AI** web app clone built using **ReactJS** and **CS
 - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - [useState](https://reactjs.org/docs/hooks-state.html), [useContext](https://reactjs.org/docs/context.html)
 
+## Assets
+- Add assets(images of icons) from assets folder
 
 ## 📦 Installation
 
