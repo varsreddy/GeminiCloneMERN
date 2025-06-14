@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
-import { Context } from "../../context/context";
+import { Context } from "../../context/ContextProvider";
 
 const Main = () => {
   // const [onSent,recentPrompt,showResult,loading,resultData,input,setInput] = useContext(Context);
