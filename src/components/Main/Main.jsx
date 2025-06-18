@@ -3,6 +3,9 @@ import "./Main.css";
 import { assets } from "../../assets/assets";
 import { Context } from "../../context/Context";
 
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+
 const Main = () => {
   const {
     input,
@@ -19,13 +22,11 @@ const Main = () => {
 
   const [isRecording, setIsRecording] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+
   const recognitionRef = useRef(null);
   const transcriptRef = useRef("");
   const silenceTimer = useRef(null);
   const isManuallyStopped = useRef(false);
-
-  const SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
 
   const startListening = () => {
     if (!SpeechRecognition) {
@@ -71,19 +72,6 @@ const Main = () => {
     await onSent(input);
   };
 
-  const cardData = [
-    { text: "What is React?", icon: assets.bulb_icon },
-    { text: "Explain JavaScript closures", icon: assets.code_icon },
-    { text: "How does authentication work?", icon: assets.lock_icon },
-    { text: "What is AI?", icon: assets.brain_icon }
-  ];
-
-  const handleCardClick = (text) => {
-    setInput(text);
-    setRecentPrompt(text);
-    onSent(text);
-  };
-
   useEffect(() => {
     if (!SpeechRecognition) {
       setErrorMsg("Speech recognition not supported.");
@@ -94,6 +82,7 @@ const Main = () => {
     recognition.lang = "en-US";
     recognition.continuous = true;
     recognition.interimResults = true;
+    recognition.maxAlternatives = 1;
 
     recognition.onstart = () => setIsRecording(true);
 
@@ -130,6 +119,19 @@ const Main = () => {
       setErrorMsg("");
     }
   }, [errorMsg]);
+
+  const cardData = [
+    { text: "Lemme know how the Gemini AI works.", icon: assets.compass_icon },
+    { text: "Briefly explain the process of Photosynthesis.", icon: assets.bulb_icon },
+    { text: "From where did cricket originate?", icon: assets.message_icon },
+    { text: "Improve the efficiency of this code.", icon: assets.code_icon },
+  ];
+
+  const handleCardClick = (text) => {
+    setPrevPrompts((prev) => [...prev, text]);
+    setRecentPrompt(text);
+    onSent(text);
+  };
 
   return (
     <div className="main">
@@ -191,12 +193,14 @@ const Main = () => {
                 overflowY: "auto",
               }}
             />
+
             <div className="search-icons">
               <img
                 src={isRecording ? assets.recording_icon : assets.mic_icon}
                 alt="mic"
                 onClick={handleMicClick}
               />
+
               {input && (
                 <img
                   onClick={handleSend}
