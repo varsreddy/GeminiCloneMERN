@@ -13,16 +13,6 @@ const Main = () => {
     setPrevPrompts,
     showResult,
     loading,
-const Main = () => {
-  const {
-    input,
-    setInput,
-    recentPrompt,
-    setRecentPrompt,
-    prevPrompts,
-    setPrevPrompts,
-    showResult,
-    loading,
     resultData,
     onSent,
   } = useContext(Context);
@@ -33,10 +23,6 @@ const Main = () => {
   const transcriptRef = useRef("");
   const silenceTimer = useRef(null);
   const isManuallyStopped = useRef(false);
-
-  // Optional: For image attachment (from other branch)
-  // const fileInputRef = useRef(null);
-  // const [attachedImage, setAttachedImage] = useState(null);
 
   const SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -85,6 +71,19 @@ const Main = () => {
     await onSent(input);
   };
 
+  const cardData = [
+    { text: "What is React?", icon: assets.bulb_icon },
+    { text: "Explain JavaScript closures", icon: assets.code_icon },
+    { text: "How does authentication work?", icon: assets.lock_icon },
+    { text: "What is AI?", icon: assets.brain_icon }
+  ];
+
+  const handleCardClick = (text) => {
+    setInput(text);
+    setRecentPrompt(text);
+    onSent(text);
+  };
+
   useEffect(() => {
     if (!SpeechRecognition) {
       setErrorMsg("Speech recognition not supported.");
@@ -95,7 +94,6 @@ const Main = () => {
     recognition.lang = "en-US";
     recognition.continuous = true;
     recognition.interimResults = true;
-    recognition.maxAlternatives = 1;
 
     recognition.onstart = () => setIsRecording(true);
 
@@ -132,10 +130,6 @@ const Main = () => {
       setErrorMsg("");
     }
   }, [errorMsg]);
-
-    setRecentPrompt(text);
-    onSent(text);
-  };
 
   return (
     <div className="main">
@@ -197,14 +191,12 @@ const Main = () => {
                 overflowY: "auto",
               }}
             />
-
             <div className="search-icons">
               <img
                 src={isRecording ? assets.recording_icon : assets.mic_icon}
                 alt="mic"
                 onClick={handleMicClick}
               />
-
               {input && (
                 <img
                   onClick={handleSend}
