@@ -3,9 +3,16 @@ import "./Main.css";
 import { assets } from "../../assets/assets";
 import { Context } from "../../context/Context";
 
-const SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
-
+const Main = () => {
+  const {
+    input,
+    setInput,
+    recentPrompt,
+    setRecentPrompt,
+    prevPrompts,
+    setPrevPrompts,
+    showResult,
+    loading,
 const Main = () => {
   const {
     input,
@@ -22,11 +29,17 @@ const Main = () => {
 
   const [isRecording, setIsRecording] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-
   const recognitionRef = useRef(null);
   const transcriptRef = useRef("");
   const silenceTimer = useRef(null);
   const isManuallyStopped = useRef(false);
+
+  // Optional: For image attachment (from other branch)
+  // const fileInputRef = useRef(null);
+  // const [attachedImage, setAttachedImage] = useState(null);
+
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
 
   const startListening = () => {
     if (!SpeechRecognition) {
@@ -120,15 +133,6 @@ const Main = () => {
     }
   }, [errorMsg]);
 
-  const cardData = [
-    { text: "Lemme know how the Gemini AI works.", icon: assets.compass_icon },
-    { text: "Briefly explain the process of Photosynthesis.", icon: assets.bulb_icon },
-    { text: "From where did cricket originate?", icon: assets.message_icon },
-    { text: "Improve the efficiency of this code.", icon: assets.code_icon },
-  ];
-
-  const handleCardClick = (text) => {
-    setPrevPrompts((prev) => [...prev, text]);
     setRecentPrompt(text);
     onSent(text);
   };
