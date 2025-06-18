@@ -24,7 +24,7 @@ A sleek and minimal **Gemini AI** web app clone built using **ReactJS** and **CS
 Clone the repository and run locally:
 
 ```bash
-git clone https://github.com/your-username/gemini-clone.git
+git clone https://github.com/varsreddy/GeminiCloneMERN.git
 cd gemini-clone
 npm install
 npm run dev

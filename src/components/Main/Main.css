@@ -199,3 +199,26 @@
         gap: 5px;
     }
 }
+
+
+.recording-indicator {
+  color: red;
+  font-size: 14px;
+  margin-top: 8px;
+  animation: pulse 1.2s infinite;
+  text-align: center;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+.error-message {
+  color: darkred;
+  font-size: 14px;
+  margin-top: 4px;
+  text-align: center;
+}
+

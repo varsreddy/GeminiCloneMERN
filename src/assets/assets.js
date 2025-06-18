@@ -13,5 +13,6 @@ export const assets = {
     message_icon: new URL('./message_icon.png', import.meta.url).href,
     code_icon: new URL('./code_icon.png', import.meta.url).href,
     send_icon: new URL('./send_icon.png', import.meta.url).href,
-    gemini_icon: new URL('./gemini_icon.png', import.meta.url).href
+    gemini_icon: new URL('./gemini_icon.png', import.meta.url).href,
+    recording_icon: new URL('./recording_wave_icon.png', import.meta.url).href,
 };
